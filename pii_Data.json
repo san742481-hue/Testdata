@@ -1,0 +1,83 @@
+{
+  "invoice": {
+    "invoice_id": "INV-2025-0314-001",
+    "issue_date": "2025-02-12",
+    "due_date": "2025-03-14",
+    "payment_terms": "Net 30",
+    "currency": "USD"
+  },
+  "bill_to": {
+    "full_name": "John Smith",
+    "email": "john.smith@customer.com",
+    "alternate_email": "jsmith.personal@gmail.com",
+    "phone": "+1-555-123-4567",
+    "alternate_phone": "+1-555-987-6543",
+    "ssn": "123-45-6789",
+    "date_of_birth": "1985-07-21",
+    "driver_license": "D1234567",
+    "address": {
+      "street": "123 Business Lane",
+      "city": "Boston",
+      "state": "MA",
+      "postal_code": "02101",
+      "country": "USA"
+    }
+  },
+  "services_provided": [
+    {
+      "item": "Consulting Services",
+      "description": "Professional IT consulting",
+      "quantity": 1,
+      "unit_price": 2500.00,
+      "total": 2500.00
+    },
+    {
+      "item": "Software License (Annual)",
+      "description": "Enterprise software subscription",
+      "quantity": 1,
+      "unit_price": 1200.00,
+      "total": 1200.00
+    },
+    {
+      "item": "Premium Support Package",
+      "description": "Priority technical support",
+      "quantity": 1,
+      "unit_price": 800.00,
+      "total": 800.00
+    }
+  ],
+  "totals": {
+    "subtotal": 4500.00,
+    "tax_percentage": 0,
+    "tax_amount": 0.00,
+    "total_due": 4500.00
+  },
+  "payment_information": {
+    "company_name": "Tech Solutions Inc.",
+    "bank_name": "First National Bank",
+    "account_number": "1234567890",
+    "routing_number": "987654321",
+    "swift_code": "FNBAUS33",
+    "iban": "US00FNBA12345678901234",
+    "online_payment_url": "https://payments.company.com"
+  },
+  "company_contact_information": {
+    "billing_email": "billing@company.com",
+    "support_email": "support@company.com",
+    "accounting_email": "accounting@company.com",
+    "phone": "+1-555-999-8888",
+    "fax": "+1-555-999-7777"
+  },
+  "compliance": {
+    "confidentiality_notice": "This invoice contains confidential and proprietary information. Unauthorized disclosure is prohibited.",
+    "expected_dlp_violations": [
+      "Email addresses (multiple)",
+      "Phone numbers",
+      "SSN (Social Security Number)",
+      "Bank account information",
+      "Routing number",
+      "Driver license number",
+      "Date of birth"
+    ]
+  }
+}

@@ -1,0 +1,332 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \qc \f0 \sa180 \li0 \fi0 \b \fs36 File MCP Plugin \u8211- How It Works\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u56513?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 File MCP Plugin\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 How It Works \u8212- Complete Guide\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 MODEL CONTEXT PROTOCOL\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 1 What is the File MCP Plugin?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The {\b File MCP (Model Context Protocol) Plugin} is a powerful bridge that connects AI assistants like Claude directly to your local file system. It enables Claude to read, write, create, delete, move, and manage files and directories on your computer using natural language \u8212- without requiring any code or terminal knowledge.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b MCP} stands for {\i Model Context Protocol}, an open standard that allows AI models to securely interact with external tools, APIs, and local resources in a structured, controlled manner.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 2 Plugin Architecture\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The File MCP Plugin follows a {\b client-server model} with three main layers:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx2880\clbrdrb\brdrs\cellx5760\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Layer\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Component\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Role\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 {\b User Interface}\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Claude Chat (claude.ai)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 You type natural language commands\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 {\b MCP Bridge}\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 MCP Server / Plugin\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Translates requests into file operations\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx2880\cellx5760\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 {\b File System}\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 OS File System (C:, D:, etc.)\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Actual files and folders on your machine\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa0 \li0 \fi0 3 How It Works \u8212- Step by Step\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 1\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 You Give a Command\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 You type: {\i "Create a folder called RAJAREDDY_FILE_MCP on D: drive."}\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 2\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Claude Understands the Intent\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Claude parses your message, identifies the intent (create directory), extracts parameters (name, location), and selects the correct MCP tool to call.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 3\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 MCP Tool is Invoked\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Claude calls {\f1 filesystem:make_directory} with {\f1 path = D:\\RAJAREDDY_FILE_MCP}.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 4\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Plugin Executes the Operation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The MCP server validates the request and executes the file system operation using OS-level APIs on your machine.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 5\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Result is Returned\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The plugin returns structured metadata \u8212- success/failure, file size, timestamps \u8212- back to Claude.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 6\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Claude Reports Back\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Claude translates the result into plain English, confirming the action or explaining any errors clearly.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 4 Available File System Tools\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The plugin exposes a rich set of tools covering all common file system operations:\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Tool Name\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 What It Does\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:list_directory\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 List files and folders in a directory\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:make_directory\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Create a new folder/directory\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:write_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Create or overwrite a file with content\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:read_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Read the contents of a file\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:append_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Append content to the end of a file\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:delete_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Permanently delete a file\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:move_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Move or rename a file\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:copy_file\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Copy a file to a new location\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:copy_directory\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Copy an entire folder recursively\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:remove_directory\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Delete a folder and all its contents\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:search_in_files\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Search text/regex pattern across files\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:find_duplicates\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Find duplicate files in a directory\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:create_zip\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Compress files into a ZIP archive\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:extract_zip\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Extract a ZIP archive to a folder\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:get_metadata\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Get file size, dates, and permissions\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:calculate_hash\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Compute MD5/SHA256 hash of a file\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:list_drives\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 List all available drives (C:, D:, etc.)\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 filesystem:analyze_text\par}
+\cell}
+{{\pard\intbl \ql \f0 \sa0 \li0 \fi0 Analyze text file \u8212- lines, words, encoding\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa0 \li0 \fi0 5 Real-World Example Workflow\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 You say:  "List all files in D:\\RAJAREDDY_FILE_MCP"\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Claude calls: filesystem:list_directory(\{ path: "D:\\RAJAREDDY_FILE_MCP" \})\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Plugin \u8594?  [\{ name: "How_File_MCP_Plugin_Works.html", size: 12400, ... \}]\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Claude says: "Found 1 file: How_File_MCP_Plugin_Works.html (12 KB)"\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 6 Security & Safety\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u56594?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Sandboxed Access\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The plugin only accesses paths and drives that have been explicitly configured and permitted.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u9989?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Explicit Confirmation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Destructive operations like delete or overwrite are always confirmed before execution.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u56523?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Audit Trail\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Every file operation is logged so you can track what was created, modified, or deleted.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u57003?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 No Remote Transfer\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The plugin operates entirely on your local machine \u8212- no data is sent to external servers.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u57057?\u65039?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Permission Checks\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Respects OS-level file permissions and will not bypass system security restrictions.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 \u55357?\u56592?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel3 \b \fs24 Structured Protocol\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 All tool calls follow a strict schema, preventing arbitrary or malformed operations.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 7 Key Benefits\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Speed:} Accomplish complex file tasks in seconds using plain English.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Intelligence:} Claude can organize, rename, and structure files smartly based on context.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Automation:} Chain multiple file operations together in a single conversation.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Multi-Drive Support:} Works across all available drives \u8212- C:, D:, and network drives.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Cross-Platform:} Compatible with Windows, macOS, and Linux file systems.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Natural Language:} No commands to memorize \u8212- just describe what you want done.\sa180\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Generated by Claude AI \u160?\u8226?\u160? File MCP Plugin Documentation \u160?\u8226?\u160? 2026\line "company_contact_information": \{ "billing_email": "billing@company.com", "support_email": "support@company.com", "accounting_email": "accounting@company.com", "phone": "+1-555-999-8888", "fax": "+1-555-999-7777" \} {\i To save as PDF: Open in browser \u8594? File \u8594? Print \u8594? Save as PDF}\par}
+}
